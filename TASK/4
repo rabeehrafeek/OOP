@@ -1,0 +1,75 @@
+
+// Base class: Product
+class Product {
+    String name;
+    double price;
+    int quantity;
+
+    // Constructor
+    public Product(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    // Method to get product info
+    public String getProductInfo() {
+        return "Product: " + name + ", Price: $" + price + ", Quantity: " + quantity;
+    }
+}
+
+// Subclass: Electronics
+class Electronics extends Product {
+    int warranty;
+
+    // Constructor
+    public Electronics(String name, double price, int quantity, int warranty) {
+        super(name, price, quantity);
+        this.warranty = warranty;
+    }
+
+    // Method to get warranty info
+    public String getWarrantyInfo() {
+        return "Warranty: " + warranty + " years";
+    }
+}
+
+// Subclass: Clothing
+class Clothing extends Product {
+    String size;
+    String material;
+
+    // Constructor
+    public Clothing(String name, double price, int quantity, String size, String material) {
+        super(name, price, quantity);
+        this.size = size;
+        this.material = material;
+    }
+
+    // Method to get clothing info
+    public String getClothingInfo() {
+        return "Size: " + size + ", Material: " + material;
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+
+        // Create Product object
+        Product p = new Product("Generic Product", 10.0, 100);
+        System.out.println(p.getProductInfo());
+        System.out.println();
+
+        // Create Electronics object
+        Electronics e = new Electronics("Laptop", 1500.0, 50, 2);
+        System.out.println(e.getProductInfo());
+        System.out.println(e.getWarrantyInfo());
+        System.out.println();
+
+        // Create Clothing object
+        Clothing c = new Clothing("T-Shirt", 25.0, 200, "M", "Cotton");
+        System.out.println(c.getProductInfo());
+        System.out.println(c.getClothingInfo());
+    }
+}
