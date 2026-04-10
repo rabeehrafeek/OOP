@@ -1,0 +1,79 @@
+
+
+class BankAccount {
+    // Private fields
+    private String accountNumber;
+    private String accountHolderName;
+    private double balance;
+
+    // Constructor
+    public BankAccount(String accountNumber, String accountHolderName) {
+        this.accountNumber = accountNumber;
+        this.accountHolderName = accountHolderName;
+        this.balance = 0.0;
+    }
+
+    // Getters
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getAccountHolderName() {
+        return accountHolderName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    // Deposit method
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    // Withdraw method
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Insufficient funds or invalid amount.");
+        }
+    }
+
+    // Method to display account details
+    public void getAccountDetails() {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Account Holder: " + accountHolderName);
+        System.out.println("Balance: " + balance);
+        System.out.println("-----------------------------");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Create BankAccount objects
+        BankAccount acc1 = new BankAccount("12345", "Alice");
+        BankAccount acc2 = new BankAccount("67890", "Bob");
+
+        // Perform transactions for acc1
+        acc1.deposit(500);
+        acc1.getAccountDetails();
+
+        acc1.withdraw(200);
+        acc1.getAccountDetails();
+
+        // Perform transactions for acc2
+        acc2.deposit(1000);
+        acc2.getAccountDetails();
+
+        acc2.withdraw(1500); // should fail
+        acc2.getAccountDetails();
+    }
+}
